@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Great+Vibes&family=Pinyon+Script&family=Playfair+Display:wght@300;400;500;600&display=swap");
 
 :root {
-  --paper: #f4f8fc;
-  --sky: #e1eef9;
-  --sky-deep: #d2e4f4;
-  --blue: #334e68;
-  --blue-soft: #5294c1;
-  --blue-pale: #90b4ce;
-  --ink: #24384d;
+  --paper: #fff5f2;       
+  --sky: #ffe4de;         
+  --sky-deep: #ffccbc;    
+  --blue: #c44536;        
+  --blue-soft: #ed6a5a;   
+  --blue-pale: #f4a261;   
+  --ink: #4a2b29;         
+  --line: rgba(196, 69, 54, 0.24);
+  --shadow: 0 18px 42px rgba(237, 106, 90, 0.2);
+  --glass: rgba(255, 230, 225, 0.42);
   --white: #ffffff;
-  --glass: rgba(255, 255, 255, 0.42);
-  --line: rgba(51, 78, 104, 0.24);
-  --shadow: 0 18px 42px rgba(82, 148, 193, 0.2);
 }
 
 * {
@@ -483,16 +483,175 @@ img {
   text-transform: uppercase;
 }
 
-.events-wrapper {
-  display: flex;
-  flex-direction: column;
+/* Tabs Container */
+.events-tab-container {
   width: 100vw;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+  position: relative;
   margin-top: 60px;
   margin-bottom: 60px;
+}
+
+.tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.tab-button {
+  background: var(--glass);
+  border: 1px solid var(--line);
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-family: Georgia, serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue);
+  cursor: pointer;
+  transition: all 300ms ease;
+  backdrop-filter: blur(10px);
+}
+
+.tab-button.is-active,
+.tab-button:hover {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+  box-shadow: var(--shadow);
+}
+
+.tab-content {
+  display: none;
+  position: relative;
+}
+
+.tab-content.is-active {
+  display: block;
+  animation: fadeInTab 500ms ease forwards;
+}
+
+@keyframes fadeInTab {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Timeline Layout */
+#tab-timeline {
+  padding: 40px 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.svg-timeline-container {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 50%;
+  width: 100px;
+  margin-left: -50px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.curved-timeline-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.timeline-img-wrapper {
+  flex: 0 0 42%;
+  height: 280px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.66);
+  /* Pop-in initial state */
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.timeline-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.8) hue-rotate(10deg);
+}
+
+.timeline-text-wrapper {
+  flex: 0 0 42%;
+  padding: 20px;
+  text-align: center;
+  /* Pop-in initial state */
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.timeline-text-wrapper h4 {
+  color: var(--blue);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.8rem;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.timeline-text-wrapper p {
+  color: rgba(36, 56, 77, 0.78);
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .timeline-row {
+    margin-bottom: 60px;
+  }
+  .timeline-img-wrapper {
+    flex: 0 0 45%;
+    height: 160px;
+  }
+  .timeline-text-wrapper {
+    flex: 0 0 45%;
+    padding: 5px;
+  }
+  .timeline-text-wrapper h4 {
+    font-size: 1.2rem;
+  }
+  .timeline-text-wrapper p {
+    font-size: 0.6rem;
+  }
+  .svg-timeline-container {
+    width: 60px;
+    margin-left: -30px;
+  }
+}
+
+.events-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   position: relative;
 }
 

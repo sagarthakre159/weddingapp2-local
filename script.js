@@ -124,10 +124,10 @@ function setupScratchCard() {
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
     const gradient = context.createLinearGradient(0, 0, rect.width, rect.height);
-    gradient.addColorStop(0, "#b3cde3");
-    gradient.addColorStop(0.42, "#f4f8fc");
-    gradient.addColorStop(0.72, "#90b4ce");
-    gradient.addColorStop(1, "#334e68");
+    gradient.addColorStop(0, "#ffd4c9");
+    gradient.addColorStop(0.42, "#fff5f2");
+    gradient.addColorStop(0.72, "#f4a261");
+    gradient.addColorStop(1, "#c44536");
     context.globalCompositeOperation = "source-over";
     context.fillStyle = gradient;
     context.fillRect(0, 0, rect.width, rect.height);
@@ -135,10 +135,10 @@ function setupScratchCard() {
     for (let i = 0; i < 520; i += 1) {
       context.fillRect(Math.random() * rect.width, Math.random() * rect.height, Math.random() * 3, 1);
     }
-    context.fillStyle = "#334e68";
+    context.fillStyle = "#c44536";
     context.font = `700 ${Math.max(15, rect.width * 0.045)}px Georgia, serif`;
     context.textAlign = "center";
-    context.fillText("Scratch to Reveal", rect.width / 2, rect.height / 2 + 5);
+    context.fillText("Scratch Me", rect.width / 2, rect.height / 2 + 6);
   }
 
   function pointerPosition(event) {
@@ -200,7 +200,7 @@ function setupScratchCard() {
 }
 
 function burst(x, y) {
-  const colors = ["#90b4ce", "#334e68", "#f4f8fc", "#ffffff", "#5294c1"];
+  const colors = ["#f4a261", "#ed6a5a", "#ffccbc", "#ffffff", "#c44536"];
   for (let i = 0; i < 36; i += 1) {
     const spark = document.createElement("span");
     const angle = Math.random() * Math.PI * 2;
@@ -221,7 +221,7 @@ function spawnButterflies(event) {
     return;
   }
 
-  const colors = ["#5294c1", "#334e68", "#90b4ce", "#7aafdb", "#b3cde3"];
+  const colors = ["#ed6a5a", "#c44536", "#f4a261", "#ffb2a0", "#ffd4c9"];
   for (let i = 0; i < 2; i += 1) {
     const butterfly = document.createElement("span");
     const side = i === 0 ? -1 : 1;
@@ -267,8 +267,78 @@ function setupChoiceToggle() {
   });
 }
 
+function setupTabs() {
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
 
+  if (!tabButtons.length) return;
 
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      tabButtons.forEach(btn => btn.classList.remove('is-active'));
+      tabContents.forEach(content => content.classList.remove('is-active'));
+
+      button.classList.add('is-active');
+      const targetId = button.getAttribute('data-target');
+      document.getElementById(targetId).classList.add('is-active');
+
+      if (typeof ScrollTrigger !== "undefined") {
+        window.setTimeout(() => ScrollTrigger.refresh(), 50);
+      }
+    });
+  });
+}
+
+function setupTimelineAnimation() {
+  if (!hasGsap || typeof ScrollTrigger === "undefined") {
+    return;
+  }
+  
+  const scroller = "#invite-scroll";
+
+  // Animate the SVG curved path
+  const path = document.getElementById("timeline-path-active");
+  if (path) {
+    const pathLength = path.getTotalLength();
+    path.style.strokeDasharray = pathLength;
+    path.style.strokeDashoffset = pathLength;
+
+    gsap.to(path, {
+      strokeDashoffset: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#tab-timeline",
+        scroller: scroller,
+        start: "top 60%",
+        end: "bottom 40%",
+        scrub: true
+      }
+    });
+  }
+
+  // Animate the timeline rows (image and text pop-in)
+  const rows = gsap.utils.toArray(".timeline-row");
+  rows.forEach(row => {
+    const imgWrapper = row.querySelector(".timeline-img-wrapper");
+    const textWrapper = row.querySelector(".timeline-text-wrapper");
+    const elements = [imgWrapper, textWrapper].filter(Boolean);
+
+    gsap.to(elements, {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "back.out(1.4)",
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: row,
+        scroller: scroller,
+        start: "top 50%", // Appears when more than 50% on screen
+        toggleActions: "play reverse play reverse"
+      }
+    });
+  });
+}
 document.addEventListener("DOMContentLoaded", () => {
   hydrateDetails();
   updateCountdown();
@@ -277,6 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const video = document.getElementById("intro-video");
   const isPortrait = window.innerHeight > window.innerWidth;
   video.src = isPortrait ? "source-video/bg-ph.mp4" : "source-video/bg-16.mp4";
+  video.poster = isPortrait ? "source-video/bg-ph-img.png" : "source-video/bg-16-img.png";
   video.style.cursor = "pointer";
   video.addEventListener("click", beginIntro, { once: true });
 
@@ -288,4 +359,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("invite-scroll").addEventListener("click", spawnButterflies);
   document.getElementById("memory-scroll").addEventListener("click", spawnButterflies);
   setupChoiceToggle();
+  setupTabs();
+  setupTimelineAnimation();
 });

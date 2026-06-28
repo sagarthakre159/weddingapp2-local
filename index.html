@@ -99,53 +99,103 @@
             <div><strong data-count="seconds">00</strong><span>Seconds</span></div>
           </div>
 
-          <div class="events-wrapper">
-            <section class="event-page reveal" id="event-pooja">
-              <img src="assets/pooja_haldi.png" alt="Pooja & Haldi Background" class="event-bg" />
-              <div class="event-content">
-                <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
-                <h3 class="event-title">Pooja &amp; Haldi</h3>
-                <div class="event-mini-rule"><span></span><i></i><span></span></div>
-                <p class="event-date">July 6th &bull; 7:00 PM Onwards</p>
-                <p class="event-desc">Join us in the sacred rituals and vibrant colors as we kickstart our wedding festivities.</p>
-              </div>
-            </section>
+          <div class="events-tab-container reveal">
+            <div class="tabs-nav">
+              <button class="tab-button is-active" data-target="tab-timeline">Timeline</button>
+              <button class="tab-button" data-target="tab-events">Events</button>
+            </div>
             
-            <section class="event-page reveal" id="event-floral-haldi">
-              <img src="assets/floral_haldi.png" alt="Floral Haldi Background" class="event-bg" />
-
-              <div class="event-content">
-                <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
-                <h3 class="event-title">Floral Haldi</h3>
-                <div class="event-mini-rule"><span></span><i></i><span></span></div>
-                <p class="event-date">July 7th &bull; 11:00 AM Onwards</p>
-                <p class="event-desc">Step into a bright and joyful morning filled with flowers, laughter, and blessings.</p>
+            <div class="tab-content is-active" id="tab-timeline">
+              <div class="svg-timeline-container">
+                <svg class="curved-timeline-svg" viewBox="0 0 100 1000" preserveAspectRatio="none">
+                  <!-- The background subtle line -->
+                  <path d="M50,0 C80,200 20,400 50,600 C80,800 20,1000 50,1000" fill="none" stroke="rgba(255, 255, 255, 0.6)" stroke-width="2"/>
+                  <!-- The active progress line drawn by scroll -->
+                  <path id="timeline-path-active" d="M50,0 C80,200 20,400 50,600 C80,800 20,1000 50,1000" fill="none" stroke="var(--blue-soft)" stroke-width="3" stroke-linecap="round"/>
+                </svg>
               </div>
-            </section>
-            
-            <section class="event-page reveal" id="event-sangeet">
-              <img src="assets/sangeet_ceremony.png" alt="Sangeet Ceremony Background" class="event-bg" />
 
-              <div class="event-content">
-                <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
-                <h3 class="event-title">Sangeet Ceremony</h3>
-                <div class="event-mini-rule"><span></span><i></i><span></span></div>
-                <p class="event-date">July 7th &bull; 8:00 PM Onwards</p>
-                <p class="event-desc">Get ready for a glamorous night of music, dance, and celebration!</p>
+              <div class="timeline-row">
+                <div class="timeline-img-wrapper"><img src="assets/pooja_haldi.png" alt="Pooja & Haldi" /></div>
+                <div class="timeline-text-wrapper">
+                  <div class="flourish">&#10086;</div>
+                  <h4>Pooja &amp; Haldi</h4>
+                  <p>July 6th &bull; 7:00 PM</p>
+                </div>
               </div>
-            </section>
-            
-            <section class="event-page reveal" id="event-wedding">
-              <img src="assets/wedding_ceremony.png" alt="Wedding Ceremony Background" class="event-bg" />
+              <div class="timeline-row reverse">
+                <div class="timeline-img-wrapper"><img src="assets/floral_haldi.png" alt="Floral Haldi" /></div>
+                <div class="timeline-text-wrapper">
+                  <div class="flourish">&#10086;</div>
+                  <h4>Floral Haldi</h4>
+                  <p>July 7th &bull; 11:00 AM</p>
+                </div>
+              </div>
+              <div class="timeline-row">
+                <div class="timeline-img-wrapper"><img src="assets/sangeet_ceremony.png" alt="Sangeet Ceremony" /></div>
+                <div class="timeline-text-wrapper">
+                  <div class="flourish">&#10086;</div>
+                  <h4>Sangeet Ceremony</h4>
+                  <p>July 7th &bull; 8:00 PM</p>
+                </div>
+              </div>
+              <div class="timeline-row reverse">
+                <div class="timeline-img-wrapper"><img src="assets/wedding_ceremony.png" alt="Wedding Ceremony" /></div>
+                <div class="timeline-text-wrapper">
+                  <div class="flourish">&#10086;</div>
+                  <h4>Wedding Ceremony</h4>
+                  <p>July 8th &bull; 11:00 AM</p>
+                </div>
+              </div>
+            </div>
 
-              <div class="event-content">
-                <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
-                <h3 class="event-title">Wedding Ceremony</h3>
-                <div class="event-mini-rule"><span></span><i></i><span></span></div>
-                <p class="event-date">July 8th &bull; 11:00 AM Onwards</p>
-                <p class="event-desc">Witness the magical moment as we tie the knot and step into our forever.</p>
+            <div class="tab-content" id="tab-events">
+              <div class="events-wrapper">
+                <section class="event-page" id="event-pooja">
+                  <img src="assets/pooja_haldi.png" alt="Pooja & Haldi Background" class="event-bg" />
+                  <div class="event-content">
+                    <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
+                    <h3 class="event-title">Pooja &amp; Haldi</h3>
+                    <div class="event-mini-rule"><span></span><i></i><span></span></div>
+                    <p class="event-date">July 6th &bull; 7:00 PM Onwards</p>
+                    <p class="event-desc">Join us in the sacred rituals and vibrant colors as we kickstart our wedding festivities.</p>
+                  </div>
+                </section>
+                
+                <section class="event-page" id="event-floral-haldi">
+                  <img src="assets/floral_haldi.png" alt="Floral Haldi Background" class="event-bg" />
+                  <div class="event-content">
+                    <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
+                    <h3 class="event-title">Floral Haldi</h3>
+                    <div class="event-mini-rule"><span></span><i></i><span></span></div>
+                    <p class="event-date">July 7th &bull; 11:00 AM Onwards</p>
+                    <p class="event-desc">Step into a bright and joyful morning filled with flowers, laughter, and blessings.</p>
+                  </div>
+                </section>
+                
+                <section class="event-page" id="event-sangeet">
+                  <img src="assets/sangeet_ceremony.png" alt="Sangeet Ceremony Background" class="event-bg" />
+                  <div class="event-content">
+                    <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
+                    <h3 class="event-title">Sangeet Ceremony</h3>
+                    <div class="event-mini-rule"><span></span><i></i><span></span></div>
+                    <p class="event-date">July 7th &bull; 8:00 PM Onwards</p>
+                    <p class="event-desc">Get ready for a glamorous night of music, dance, and celebration!</p>
+                  </div>
+                </section>
+                
+                <section class="event-page" id="event-wedding">
+                  <img src="assets/wedding_ceremony.png" alt="Wedding Ceremony Background" class="event-bg" />
+                  <div class="event-content">
+                    <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
+                    <h3 class="event-title">Wedding Ceremony</h3>
+                    <div class="event-mini-rule"><span></span><i></i><span></span></div>
+                    <p class="event-date">July 8th &bull; 11:00 AM Onwards</p>
+                    <p class="event-desc">Witness the magical moment as we tie the knot and step into our forever.</p>
+                  </div>
+                </section>
               </div>
-            </section>
+            </div>
           </div>
 
           <section class="location-block reveal" aria-label="Location">
