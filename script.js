@@ -3,7 +3,7 @@ const details = {
   groom: "Jay",
   dateLabel: "08.07.26",
   countdownTarget: "2026-07-08T12:00:00",
-  mapUrl: "https://maps.google.com",
+  mapUrl: "https://www.google.com/maps/place/waterstone+resort+chhindwara/data=!4m2!3m1!1s0x3bd569f9caf4a2f9:0xcf694895ffe80f3a?sa=X&ved=1t:242&ictx=111",
 };
 
 const hasGsap = typeof window.gsap !== "undefined";
@@ -338,6 +338,24 @@ function setupTimelineAnimation() {
       }
     });
   });
+
+  // Animate the venue card similarly
+  const venueCard = document.querySelector(".venue-card");
+  if (venueCard) {
+    gsap.to(venueCard, {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "back.out(1.4)",
+      scrollTrigger: {
+        trigger: venueCard,
+        scroller: scroller,
+        start: "top 70%",
+        toggleActions: "play reverse play reverse"
+      }
+    });
+  }
 }
 document.addEventListener("DOMContentLoaded", () => {
   hydrateDetails();
@@ -345,20 +363,37 @@ document.addEventListener("DOMContentLoaded", () => {
   window.setInterval(updateCountdown, 1000);
 
   const video = document.getElementById("intro-video");
-  const isPortrait = window.innerHeight > window.innerWidth;
-  video.src = isPortrait ? "source-video/bg-ph.mp4" : "source-video/bg-16.mp4";
-  video.poster = isPortrait ? "source-video/bg-ph-img.png" : "source-video/bg-16-img.png";
-  video.style.cursor = "pointer";
-  video.addEventListener("click", beginIntro, { once: true });
 
-  document.getElementById("explore-button").addEventListener("click", () => showScreen("invite-screen"));
-  document.getElementById("map-button").addEventListener("click", () => window.open(details.mapUrl, "_blank"));
-  document.getElementById("memories-button").addEventListener("click", openMemories);
-  document.getElementById("back-button").addEventListener("click", () => showScreen("invite-screen"));
+  function updateResponsiveAssets() {
+    const isPortrait = window.innerHeight > window.innerWidth;
+    
+    // Update video
+    if (video && !video.hasAttribute("data-loaded")) {
+      video.src = isPortrait ? "source-video/bg-ph.mp4" : "source-video/bg-16.mp4";
+      video.poster = isPortrait ? "source-video/bg-ph-img.png" : "source-video/bg-16-img.png";
+      video.setAttribute("data-loaded", "true");
+    }
+  }
+
+  updateResponsiveAssets();
+
+  if (video) {
+    video.style.cursor = "pointer";
+    video.addEventListener("click", beginIntro, { once: true });
+  }
+
+  const exploreButton = document.getElementById("explore-button");
+  if (exploreButton) {
+    exploreButton.addEventListener("click", () => showScreen("invite-screen"));
+  }
+  
+  const mapBtn = document.getElementById("map-button");
+  if (mapBtn) mapBtn.addEventListener("click", () => window.open(details.mapUrl, "_blank"));
+
+  // Initialize directly to invite-screen
+  // showScreen("invite-screen");
 
   document.getElementById("invite-scroll").addEventListener("click", spawnButterflies);
-  document.getElementById("memory-scroll").addEventListener("click", spawnButterflies);
-  setupChoiceToggle();
   setupTabs();
   setupTimelineAnimation();
 });

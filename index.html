@@ -40,9 +40,9 @@
         </h1>
 
         <p class="date-line">
-          <span>22</span>
+          <span>08</span>
           <b>&bull;</b>
-          <span>06</span>
+          <span>07</span>
           <b>&bull;</b>
           <span>26</span>
         </p>
@@ -58,32 +58,29 @@
     <section class="screen invite-screen" id="invite-screen" aria-label="Wedding invitation">
       <div class="scroll-panel" id="invite-scroll">
         <div class="invite-inner">
-          <header class="welcome-copy reveal">
-            <div class="flourish">&#10086;</div>
-            <p>
-              We are honored to welcome you to the<br/>
-              Wedding ceremony of<br/>
-              <strong><span data-bride>Kristen</span> &amp; <span data-groom>Jordan</span></strong>
-              <span>
-                As they begin their journey together in faith and love,<br/>
-                we thank you for being part of this blessed occasion &hearts;
-              </span>
-            </p>
-            <div class="flourish">&#10086;</div>
+          <header class="hero-header reveal" id="hero-header">
+            <div class="hero-content-wrapper">
+              <span class="hero-eyebrow">Together with their families</span>
+              <h1 class="hero-names"><span data-bride>Kristen</span> <span class="hero-amp">&amp;</span> <span data-groom>Jordan</span></h1>
+              <p class="hero-subtext">Joyfully invite you to their wedding celebration</p>
+              <div class="hero-date-box">
+                <span class="hero-date" data-date>08.07.26</span>
+              </div>
+            </div>
           </header>
 
+          <!--
           <div class="section-divider reveal">
             <span></span>
             <b>&#10022; A Gift Awaits &#10022;</b>
             <span></span>
           </div>
 
-          <p class="tiny-label reveal">Scratch to Reveal</p>
-
           <div class="scratch-card reveal" id="scratch-card">
             <img src="assets/wedding-art.png" alt="Revealed wedding memory" />
             <canvas id="scratch-canvas" aria-label="Scratch to reveal the wedding image"></canvas>
           </div>
+          -->
 
           <div class="section-divider reveal">
             <span></span>
@@ -199,76 +196,28 @@
           </div>
 
           <section class="location-block reveal" aria-label="Location">
-            <h2>Location</h2>
+            <h2>Venue</h2>
             <div class="mini-rule" aria-hidden="true">
               <span></span>
               <i></i>
               <span></span>
             </div>
-            <img src="assets/castle.svg" alt="Castle wedding venue illustration" class="castle-art" />
-            <button class="soft-button" type="button" id="map-button">View Location Map</button>
+            <div class="venue-card">
+              <img src="assets/venue.png" alt="Wedding Venue" class="venue-img" />
+              <div class="venue-overlay"></div>
+              <h3 class="venue-text">Waterstone Resort</h3>
+            </div>
+            <button class="map-button" type="button" id="map-button">View Location Map</button>
           </section>
 
           <footer class="invite-footer reveal">
             <div class="name-rule">
               <span></span>
-              <h2><span data-bride>Kristen</span> &amp; <span data-groom>Jordan</span></h2>
+              <h2>Karade &amp; Dadhe Families</h2>
               <span></span>
             </div>
-            <button class="soft-button" type="button" id="memories-button">&#10022; Happy Memories</button>
-            <p>Message me on WhatsApp to make this type of wedding site</p>
+            <p>Joyfully welcome you to share in our happiness and bless the couple.</p>
           </footer>
-        </div>
-      </div>
-    </section>
-
-    <section class="screen memory-screen" id="memory-screen" aria-label="Cute memories">
-      <button class="back-button" type="button" id="back-button" aria-label="Back to invitation">
-        <span aria-hidden="true">&lt;</span>
-        Back
-      </button>
-
-      <div class="memory-scroll" id="memory-scroll">
-        <header class="memory-heading reveal">
-          <div class="flourish">&#10086;</div>
-          <h2>Cute Memories</h2>
-          <div class="mini-rule" aria-hidden="true">
-            <span></span>
-            <i></i>
-            <span></span>
-          </div>
-          <p>Scroll down to revisit our journey</p>
-        </header>
-
-        <div class="memory-timeline" aria-label="Memory gallery">
-          <span class="timeline-line"></span>
-          <article class="memory-card reveal">
-            <img src="assets/wedding-art.png" alt="Memory 1" />
-          </article>
-          <article class="memory-card reveal">
-            <img src="assets/wedding-art.png" alt="Memory 2" />
-          </article>
-          <article class="memory-card reveal">
-            <img src="assets/wedding-art.png" alt="Memory 3" />
-          </article>
-          <article class="memory-card reveal">
-            <img src="assets/wedding-art.png" alt="Memory 4" />
-          </article>
-          <article class="memory-card reveal">
-            <img src="assets/wedding-art.png" alt="Memory 5" />
-          </article>
-          <article class="memory-card reveal">
-            <img src="assets/wedding-art.png" alt="Memory 6" />
-          </article>
-        </div>
-
-        <div class="memory-choice reveal" data-no-butterfly>
-          <div class="choice-toggle" id="choice-toggle" role="button" tabindex="0" aria-label="Toggle girl or boy">
-            <span class="choice-pill"></span>
-            <b>Girl</b>
-            <b>Boy</b>
-          </div>
-          <p id="choice-note">Girl side says love wins softly.</p>
         </div>
       </div>
     </section>
