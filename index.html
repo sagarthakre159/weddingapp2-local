@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A special wedding surprise website" />
+  <title>Wedding2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="app-shell" id="app">
+    <div class="sky-bg" aria-hidden="true">
+      <span class="star"></span>
+      <span class="star"></span>
+      <span class="star"></span>
+      <span class="star"></span>
+      <span class="star"></span>
+    </div>
+
+    <section class="screen intro-screen is-active" id="intro-screen" aria-label="Wedding intro">
+      <video id="intro-video" class="intro-video" playsinline preload="auto"></video>
+
+
+      <div class="intro-card" id="intro-card" aria-hidden="true">
+        <p class="intro-kicker">We are honored to welcome you</p>
+        <p class="intro-subtitle">to the wedding ceremony of</p>
+
+        <div class="ornament-row" aria-hidden="true">
+          <span></span>
+          <i>&hearts;</i>
+          <span></span>
+        </div>
+
+        <h1>
+          <span data-bride>Priya</span>
+          <em>&amp;</em>
+          <span data-groom>Jay</span>
+        </h1>
+
+        <p class="date-line">
+          <span>22</span>
+          <b>&bull;</b>
+          <span>06</span>
+          <b>&bull;</b>
+          <span>26</span>
+        </p>
+
+        <button class="glass-button" type="button" id="explore-button">
+          <span>&#10022;</span>
+          <strong>Explore</strong>
+          <span>&#10022;</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="screen invite-screen" id="invite-screen" aria-label="Wedding invitation">
+      <div class="scroll-panel" id="invite-scroll">
+        <div class="invite-inner">
+          <header class="welcome-copy reveal">
+            <div class="flourish">&#10086;</div>
+            <p>
+              We are honored to welcome you to the<br/>
+              Wedding ceremony of<br/>
+              <strong><span data-bride>Kristen</span> &amp; <span data-groom>Jordan</span></strong>
+              <span>
+                As they begin their journey together in faith and love,<br/>
+                we thank you for being part of this blessed occasion &hearts;
+              </span>
+            </p>
+            <div class="flourish">&#10086;</div>
+          </header>
+
+          <div class="section-divider reveal">
+            <span></span>
+            <b>&#10022; A Gift Awaits &#10022;</b>
+            <span></span>
+          </div>
+
+          <p class="tiny-label reveal">Scratch to Reveal</p>
+
+          <div class="scratch-card reveal" id="scratch-card">
+            <img src="assets/wedding-art.png" alt="Revealed wedding memory" />
+            <canvas id="scratch-canvas" aria-label="Scratch to reveal the wedding image"></canvas>
+          </div>
+
+          <div class="section-divider reveal">
+            <span></span>
+            <b>&#10022; Countdown &#10022;</b>
+            <span></span>
+          </div>
+
+          <p class="tiny-label reveal">Remaining Days</p>
+          <div class="countdown reveal" id="countdown">
+            <div><strong data-count="days">00</strong><span>Days</span></div>
+            <div><strong data-count="hours">00</strong><span>Hours</span></div>
+            <div><strong data-count="minutes">00</strong><span>Minutes</span></div>
+            <div><strong data-count="seconds">00</strong><span>Seconds</span></div>
+          </div>
+
+          <div class="events-wrapper">
+            <section class="event-page reveal" id="event-pooja">
+              <img src="assets/pooja_haldi.png" alt="Pooja & Haldi Background" class="event-bg" />
+              <div class="event-content">
+                <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
+                <h3 class="event-title">Pooja &amp; Haldi</h3>
+                <div class="event-mini-rule"><span></span><i></i><span></span></div>
+                <p class="event-date">July 6th &bull; 7:00 PM Onwards</p>
+                <p class="event-desc">Join us in the sacred rituals and vibrant colors as we kickstart our wedding festivities.</p>
+              </div>
+            </section>
+            
+            <section class="event-page reveal" id="event-floral-haldi">
+              <img src="assets/floral_haldi.png" alt="Floral Haldi Background" class="event-bg" />
+
+              <div class="event-content">
+                <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
+                <h3 class="event-title">Floral Haldi</h3>
+                <div class="event-mini-rule"><span></span><i></i><span></span></div>
+                <p class="event-date">July 7th &bull; 11:00 AM Onwards</p>
+                <p class="event-desc">Step into a bright and joyful morning filled with flowers, laughter, and blessings.</p>
+              </div>
+            </section>
+            
+            <section class="event-page reveal" id="event-sangeet">
+              <img src="assets/sangeet_ceremony.png" alt="Sangeet Ceremony Background" class="event-bg" />
+
+              <div class="event-content">
+                <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
+                <h3 class="event-title">Sangeet Ceremony</h3>
+                <div class="event-mini-rule"><span></span><i></i><span></span></div>
+                <p class="event-date">July 7th &bull; 8:00 PM Onwards</p>
+                <p class="event-desc">Get ready for a glamorous night of music, dance, and celebration!</p>
+              </div>
+            </section>
+            
+            <section class="event-page reveal" id="event-wedding">
+              <img src="assets/wedding_ceremony.png" alt="Wedding Ceremony Background" class="event-bg" />
+
+              <div class="event-content">
+                <div class="flourish" style="color: #fff; opacity: 0.9;">&#10086;</div>
+                <h3 class="event-title">Wedding Ceremony</h3>
+                <div class="event-mini-rule"><span></span><i></i><span></span></div>
+                <p class="event-date">July 8th &bull; 11:00 AM Onwards</p>
+                <p class="event-desc">Witness the magical moment as we tie the knot and step into our forever.</p>
+              </div>
+            </section>
+          </div>
+
+          <section class="location-block reveal" aria-label="Location">
+            <h2>Location</h2>
+            <div class="mini-rule" aria-hidden="true">
+              <span></span>
+              <i></i>
+              <span></span>
+            </div>
+            <img src="assets/castle.svg" alt="Castle wedding venue illustration" class="castle-art" />
+            <button class="soft-button" type="button" id="map-button">View Location Map</button>
+          </section>
+
+          <footer class="invite-footer reveal">
+            <div class="name-rule">
+              <span></span>
+              <h2><span data-bride>Kristen</span> &amp; <span data-groom>Jordan</span></h2>
+              <span></span>
+            </div>
+            <button class="soft-button" type="button" id="memories-button">&#10022; Happy Memories</button>
+            <p>Message me on WhatsApp to make this type of wedding site</p>
+          </footer>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen memory-screen" id="memory-screen" aria-label="Cute memories">
+      <button class="back-button" type="button" id="back-button" aria-label="Back to invitation">
+        <span aria-hidden="true">&lt;</span>
+        Back
+      </button>
+
+      <div class="memory-scroll" id="memory-scroll">
+        <header class="memory-heading reveal">
+          <div class="flourish">&#10086;</div>
+          <h2>Cute Memories</h2>
+          <div class="mini-rule" aria-hidden="true">
+            <span></span>
+            <i></i>
+            <span></span>
+          </div>
+          <p>Scroll down to revisit our journey</p>
+        </header>
+
+        <div class="memory-timeline" aria-label="Memory gallery">
+          <span class="timeline-line"></span>
+          <article class="memory-card reveal">
+            <img src="assets/wedding-art.png" alt="Memory 1" />
+          </article>
+          <article class="memory-card reveal">
+            <img src="assets/wedding-art.png" alt="Memory 2" />
+          </article>
+          <article class="memory-card reveal">
+            <img src="assets/wedding-art.png" alt="Memory 3" />
+          </article>
+          <article class="memory-card reveal">
+            <img src="assets/wedding-art.png" alt="Memory 4" />
+          </article>
+          <article class="memory-card reveal">
+            <img src="assets/wedding-art.png" alt="Memory 5" />
+          </article>
+          <article class="memory-card reveal">
+            <img src="assets/wedding-art.png" alt="Memory 6" />
+          </article>
+        </div>
+
+        <div class="memory-choice reveal" data-no-butterfly>
+          <div class="choice-toggle" id="choice-toggle" role="button" tabindex="0" aria-label="Toggle girl or boy">
+            <span class="choice-pill"></span>
+            <b>Girl</b>
+            <b>Boy</b>
+          </div>
+          <p id="choice-note">Girl side says love wins softly.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
