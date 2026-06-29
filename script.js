@@ -383,6 +383,11 @@ function setupTimelineAnimation() {
   }
 }
 document.addEventListener("DOMContentLoaded", () => {
+  const introAudio = document.getElementById("intro-audio");
+  if (introAudio) introAudio.volume = 0.75;
+  const inviteAudio = document.getElementById("invite-audio");
+  if (inviteAudio) inviteAudio.volume = 0.75;
+
   hydrateDetails();
   updateCountdown();
   window.setInterval(updateCountdown, 1000);
