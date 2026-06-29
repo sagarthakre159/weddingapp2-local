@@ -384,9 +384,9 @@ function setupTimelineAnimation() {
 }
 document.addEventListener("DOMContentLoaded", () => {
   const introAudio = document.getElementById("intro-audio");
-  if (introAudio) introAudio.volume = 0.75;
+  if (introAudio) introAudio.volume = 0.5;
   const inviteAudio = document.getElementById("invite-audio");
-  if (inviteAudio) inviteAudio.volume = 0.75;
+  if (inviteAudio) inviteAudio.volume = 0.5;
 
   hydrateDetails();
   updateCountdown();
