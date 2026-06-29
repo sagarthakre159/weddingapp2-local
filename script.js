@@ -49,10 +49,30 @@ function beginIntro() {
 
   video.playbackRate = 2;
   video.play().catch((e) => console.error("Video playback failed:", e));
-  
-  // if (audio) {
-  //   audio.play().catch((e) => console.error("Audio playback failed:", e));
-  // }
+
+  if (audio) {
+    audio.play().catch((e) => console.error("Audio playback failed:", e));
+  }
+
+  // Handle visibility change for audio
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      if (audio) audio.pause();
+      const inviteAudio = document.getElementById("invite-audio");
+      if (inviteAudio) inviteAudio.pause();
+    } else {
+      // Resume based on which screen is active
+      const introScreen = document.getElementById("intro-screen");
+      const inviteScreen = document.getElementById("invite-screen");
+      
+      if (introScreen && introScreen.classList.contains("is-active")) {
+        if (audio && !audio.ended) audio.play().catch(e => console.error("Audio resume failed:", e));
+      } else if (inviteScreen && inviteScreen.classList.contains("is-active")) {
+        const inviteAudio = document.getElementById("invite-audio");
+        if (inviteAudio) inviteAudio.play().catch(e => console.error("Invite audio resume failed:", e));
+      }
+    }
+  });
 
   video.addEventListener("ended", () => {
     const card = document.getElementById("intro-card");
@@ -390,14 +410,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const exploreButton = document.getElementById("explore-button");
   if (exploreButton) {
     exploreButton.addEventListener("click", () => {
-      // const introAudio = document.getElementById("intro-audio");
-      // if (introAudio) {
-      //   introAudio.pause();
-      // }
-      // const inviteAudio = document.getElementById("invite-audio");
-      // if (inviteAudio) {
-      //   inviteAudio.play().catch(e => console.error("Invite audio playback failed:", e));
-      // }
+      const introAudio = document.getElementById("intro-audio");
+      if (introAudio) {
+        introAudio.pause();
+      }
+      const inviteAudio = document.getElementById("invite-audio");
+      if (inviteAudio) {
+        inviteAudio.play().catch(e => console.error("Invite audio playback failed:", e));
+      }
       showScreen("invite-screen");
     });
   }
