@@ -44,10 +44,15 @@ function showScreen(id) {
 
 function beginIntro() {
   const video = document.getElementById("intro-video");
+  const audio = document.getElementById("intro-audio");
   video.style.cursor = "default";
 
   video.playbackRate = 2;
   video.play().catch((e) => console.error("Video playback failed:", e));
+  
+  if (audio) {
+    audio.play().catch((e) => console.error("Audio playback failed:", e));
+  }
 
   video.addEventListener("ended", () => {
     const card = document.getElementById("intro-card");
@@ -384,7 +389,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const exploreButton = document.getElementById("explore-button");
   if (exploreButton) {
-    exploreButton.addEventListener("click", () => showScreen("invite-screen"));
+    exploreButton.addEventListener("click", () => {
+      const introAudio = document.getElementById("intro-audio");
+      if (introAudio) {
+        introAudio.pause();
+      }
+      const inviteAudio = document.getElementById("invite-audio");
+      if (inviteAudio) {
+        inviteAudio.play().catch(e => console.error("Invite audio playback failed:", e));
+      }
+      showScreen("invite-screen");
+    });
   }
   
   const mapBtn = document.getElementById("map-button");
